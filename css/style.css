@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
 }
+
 html {
     height: 100vh;
     width: 100vw;
@@ -11,23 +12,28 @@ body {
     height: 100%;
     display: grid;
     grid-template-areas: "body"
-    "footer";
+        "footer";
     grid-template-rows: 80% 20%;
 }
 
-header{
+header {
     width: 100%;
     grid-area: "body";
     display: grid;
-    grid-template-columns: repeat(50,1fr);
-    grid-template-rows:repeat(25, 1fr);
+    grid-template-columns: repeat(50, 1fr);
+    grid-template-rows: repeat(25, 1fr);
 }
 
-.sky{
+.sky {
     background-color: rgba(156, 233, 233);
 }
 
-.sky:hover, .block:hover, .tree:hover, .grass:hover, .ground:hover {
+.sky:hover,
+.block:hover,
+.tree:hover,
+.grass:hover,
+.ground:hover,
+.branch:hover {
     outline: white;
     border: 2px solid rgb(255, 255, 255);
 }
@@ -36,7 +42,7 @@ header{
     background-image: url("../images/block.jpg");
 }
 
-.grass{
+.grass {
     background-image: url("../images/grass.png");
 }
 
@@ -45,9 +51,37 @@ header{
 }
 
 .tree {
-    background-image: url("../images/tree.png") ;
+    background-image: url("../images/tree.png");
 }
+
+.branch {
+    background-image: url("../images/branch.png");
+}
+
 footer {
+    width: 100%;
+    height: 100%;
     grid-area: "footer";
     background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+footer button {
+    margin: 2%;
+    margin-top: 5%;
+    border-radius: 12px;
+    width: 10%;
+    height: 50%;
+    background-color: rgba(68, 68, 68);
+}
+
+footer button:focus {
+    border: 1px solid white;
+}
+
+footer img {
+    
+    width: 90px;
+    height: 90px;    
 }

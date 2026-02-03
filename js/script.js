@@ -21,6 +21,9 @@ for (let i = 0; i < 25; i++) {
         else if (i > 15) {
             cube.classList = "ground"
         }
+        else if(i === 8 && ((j > 1 && j <=7) || (j > 9 && j < 16) || (j > 37 && j < 43))){
+            cube.classList = "branch"            
+        }
         head.appendChild(cube)
     }
 }
