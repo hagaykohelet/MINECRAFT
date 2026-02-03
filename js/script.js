@@ -1,12 +1,10 @@
 const head = document.getElementById("header")
-
+let cursor = null;
 for (let i = 0; i < 25; i++) {
     for (let j = 0; j < 50; j++) {
         const cube = document.createElement("div")
         cube.classList = "sky"
-        cube.addEventListener("click", () => {
-            cube.classList = "sky"
-        })
+
         if (i > 20) {
             cube.classList = "block"
         }
@@ -21,10 +19,46 @@ for (let i = 0; i < 25; i++) {
         else if (i > 15) {
             cube.classList = "ground"
         }
-        else if(i === 8 && ((j > 1 && j <=7) || (j > 9 && j < 16) || (j > 37 && j < 43))){
-            cube.classList = "branch"            
+        else if (i === 8 && ((j > 1 && j <= 7) || (j > 9 && j < 16) || (j > 37 && j < 43))) {
+            cube.classList = "branch"
         }
+        cube.addEventListener("click", () => {
+            if (cursor === "axe" && (cube.className === "tree" || cube.className === "branch")) {
+                cube.classList = "sky"
+            }
+            if (cursor === "shovel" && (cube.className === "grass" || cube.className === "ground")) {
+                cube.classList = "sky"
+            }
+            if (cursor === "pickaxe" && cube.className === "block") {
+                cube.classList = "sky"
+            }
+        })
+
         head.appendChild(cube)
     }
 }
+
+
+
+function changeCursor(tool) {
+    if (tool.id === "axe") {
+        cursor = "axe"
+        document.body.style.cursor = 'url("../images_cursor/ax.ico"), auto'
+    }
+    if (tool.id === "shovel") {
+        1
+        cursor = "shovel"
+        document.body.style.cursor = 'url("../images_cursor/shovel.ico"), auto'
+    }
+    if (tool.id === "pickaxe") {
+        cursor = "pickaxe"
+        document.body.style.cursor = 'url("../images_cursor/pickaxe.ico"), auto'
+
+    }
+    if (tool.id === "sword") {
+        cursor = "sword"
+        document.body.style.cursor = 'url("../images_cursor/sword_cursor.ico"), auto'
+    }
+}
+
 
