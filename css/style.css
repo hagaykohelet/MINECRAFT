@@ -81,8 +81,6 @@ footer button:focus {
 }
 
 footer img {
-    width: 90px;
-    height: 90px;    
+    width: 60%;
+    height: 60%;
 }
-
-
