@@ -2,11 +2,26 @@ const head = document.getElementById("header")
 
 for (let i = 0; i < 25; i++) {
     for (let j = 0; j < 50; j++) {
-        const skyCube = document.createElement("div")
-        skyCube.classList = "sky"
-        head.appendChild(skyCube)
+        const cube = document.createElement("div")
+        cube.classList = "sky"
+        cube.addEventListener("click", () => {
+            cube.classList = "sky"
+        })
+        if (i > 20) {
+            cube.classList = "block"
+        }
+
+        else if (i === 15) {
+            cube.classList = "grass"
+        }
+        else if ((i <= 14 && i > 8) && ((j > 3 && j <= 5) || (j > 11 && j < 14) || j === 40)) {
+            cube.classList = "tree"
+        }
+
+        else if (i > 15) {
+            cube.classList = "ground"
+        }
+        head.appendChild(cube)
     }
 }
-
-
 
