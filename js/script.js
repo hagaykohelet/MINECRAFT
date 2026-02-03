@@ -46,7 +46,6 @@ function changeCursor(tool) {
         document.body.style.cursor = 'url("../images_cursor/ax.ico"), auto'
     }
     if (tool.id === "shovel") {
-        1
         cursor = "shovel"
         document.body.style.cursor = 'url("../images_cursor/shovel.ico"), auto'
     }
