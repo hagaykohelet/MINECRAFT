@@ -1,7 +1,7 @@
 const head = document.getElementById("header")
 let cursor = null;
 const box = document.getElementById("box")
-let inventory = document.getElementById("inventory")
+const inventory = document.getElementById("inventory")
 let openBox = false;
 let boxContent = {
     block: 0,
@@ -14,11 +14,9 @@ for (let i = 0; i < 25; i++) {
     for (let j = 0; j < 50; j++) {
         const cube = document.createElement("div")
         cube.classList = "sky"
-
         if (i > 20) {
             cube.classList = "block"
         }
-
         else if (i === 15) {
             cube.classList = "grass"
         }
@@ -36,12 +34,15 @@ for (let i = 0; i < 25; i++) {
             if (cursor === "axe" && (cube.className === "tree" || cube.className === "branch")) {
                 boxContent[cube.className] += 1
                 if (boxContent[cube.className] === 1) {
-                    const content = document.createElement("div")
+                    const content = document.createElement("button")
                     content.classList = "content"
                     if (cube.className === "tree") {
+                        content.className = "tree"
                         content.style.backgroundImage = "url('../images/tree.png')"
+
                     }
                     else {
+                        content.className = "branch"
                         content.style.backgroundImage = "url('../images/branch.png')"
                     }
 
@@ -52,7 +53,7 @@ for (let i = 0; i < 25; i++) {
             if (cursor === "shovel" && (cube.className === "grass" || cube.className === "ground")) {
                 boxContent[cube.className] += 1
                 if (boxContent[cube.className] === 1) {
-                    const content = document.createElement("div")
+                    const content = document.createElement("button")
                     content.classList = "content"
                     if (cube.className === "grass") {
                         content.style.backgroundImage = "url('../images/grass.png')"
@@ -68,7 +69,7 @@ for (let i = 0; i < 25; i++) {
             if (cursor === "pickaxe" && cube.className === "block") {
                 boxContent.block += 1
                 if (boxContent[cube.className] === 1) {
-                    const content = document.createElement("div")
+                    const content = document.createElement("button")
                     content.classList = "content"
                     content.style.backgroundImage = "url('../images/block.jpg')"
                     inventory.appendChild(content)
@@ -105,7 +106,7 @@ function changeCursor(tool) {
 
 
 box.addEventListener("click", () => {
-    if (boxContent.block === 0 && boxContent.grass === 0 && boxContent.tree === 0 && ground === 0 && branch === 0) {
+    if (boxContent.block === 0 && boxContent.grass === 0 && boxContent.tree === 0 && boxContent.ground === 0 && boxContent.branch === 0) {
         // const alert = document.createElement("div")
         // alert.style.width= "50px"
         // alert.style.height = "20px"
