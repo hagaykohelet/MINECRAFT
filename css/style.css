@@ -69,11 +69,12 @@ footer {
 
 footer button {
     margin: 2%;
-    margin-top: 5%;
+    margin-top: 2%;
     border-radius: 12px;
-    width: 10%;
+    width: 7%;
     height: 50%;
     background-color: rgba(68, 68, 68);
+    z-index: 1;
 }
 
 footer button:focus {
@@ -83,4 +84,30 @@ footer button:focus {
 footer img {
     width: 60px;
     height: 60px;
+}
+
+.reset-game {
+    width: 120px;
+}
+
+.reset-game a {
+    text-decoration: none;
+    color: white;
+}
+
+
+.inventory {
+    display: none;
+    background-color: rgb(78, 78, 78);
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    bottom: 100px;
+    gap: 2%;
+}
+
+.content {
+    width: 100px;
+    height: 100px;
+    background-image: none;
 }

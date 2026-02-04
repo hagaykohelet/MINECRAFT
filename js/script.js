@@ -1,5 +1,15 @@
 const head = document.getElementById("header")
 let cursor = null;
+const box = document.getElementById("box")
+let inventory = document.getElementById("inventory")
+let openBox = false;
+let boxContent = {
+    block: 0,
+    grass: 0,
+    tree: 0,
+    ground: 0,
+    branch: 0
+}
 for (let i = 0; i < 25; i++) {
     for (let j = 0; j < 50; j++) {
         const cube = document.createElement("div")
@@ -24,12 +34,45 @@ for (let i = 0; i < 25; i++) {
         }
         cube.addEventListener("click", () => {
             if (cursor === "axe" && (cube.className === "tree" || cube.className === "branch")) {
+                boxContent[cube.className] += 1
+                if (boxContent[cube.className] === 1) {
+                    const content = document.createElement("div")
+                    content.classList = "content"
+                    if (cube.className === "tree") {
+                        content.style.backgroundImage = "url('../images/tree.png')"
+                    }
+                    else {
+                        content.style.backgroundImage = "url('../images/branch.png')"
+                    }
+
+                    inventory.appendChild(content)
+                }
                 cube.classList = "sky"
             }
             if (cursor === "shovel" && (cube.className === "grass" || cube.className === "ground")) {
+                boxContent[cube.className] += 1
+                if (boxContent[cube.className] === 1) {
+                    const content = document.createElement("div")
+                    content.classList = "content"
+                    if (cube.className === "grass") {
+                        content.style.backgroundImage = "url('../images/grass.png')"
+                    }
+                    else {
+                        content.style.backgroundImage = "url('../images/ground.png')"
+                    }
+
+                    inventory.appendChild(content)
+                }
                 cube.classList = "sky"
             }
             if (cursor === "pickaxe" && cube.className === "block") {
+                boxContent.block += 1
+                if (boxContent[cube.className] === 1) {
+                    const content = document.createElement("div")
+                    content.classList = "content"
+                    content.style.backgroundImage = "url('../images/block.jpg')"
+                    inventory.appendChild(content)
+                }
                 cube.classList = "sky"
             }
         })
@@ -61,3 +104,21 @@ function changeCursor(tool) {
 }
 
 
+box.addEventListener("click", () => {
+    if (boxContent.block === 0 && boxContent.grass === 0 && boxContent.tree === 0 && ground === 0 && branch === 0) {
+        // const alert = document.createElement("div")
+        // alert.style.width= "50px"
+        // alert.style.height = "20px"
+        // alert.textContent = "start playing to have items"
+        // alert.style.backgroundColor = "red"
+        // head.appendChild(alert)
+    }
+    else if (!openBox) {
+        inventory.style.display = "flex"
+        openBox = true;
+    }
+    else {
+        inventory.style.display = "none"
+        openBox = false
+    }
+})
