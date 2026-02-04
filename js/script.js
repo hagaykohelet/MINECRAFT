@@ -1,4 +1,4 @@
-const head = document.getElementById("header")
+    const head = document.getElementById("header")
 let cursor = null;
 const box = document.getElementById("box")
 const inventory = document.getElementById("inventory")
@@ -31,21 +31,24 @@ for (let i = 0; i < 25; i++) {
             cube.classList = "branch"
         }
         cube.addEventListener("click", () => {
+
             if (cursor === "axe" && (cube.className === "tree" || cube.className === "branch")) {
                 boxContent[cube.className] += 1
                 if (boxContent[cube.className] === 1) {
                     const content = document.createElement("button")
                     content.classList = "content"
                     if (cube.className === "tree") {
-                        content.className = "tree"
+                        // content.className = "tree"
                         content.style.backgroundImage = "url('../images/tree.png')"
-
+                        
                     }
                     else {
-                        content.className = "branch"
+                        // content.className = "branch"
                         content.style.backgroundImage = "url('../images/branch.png')"
                     }
-
+                    // const pargraph = document.createElement("p")
+                    // pargraph.innerHTML = boxContent[cube.className]
+                    // console.log(pargraph)
                     inventory.appendChild(content)
                 }
                 cube.classList = "sky"
@@ -116,6 +119,7 @@ box.addEventListener("click", () => {
     }
     else if (!openBox) {
         inventory.style.display = "flex"
+        inventory.style.flexWrap == "wrap"
         openBox = true;
     }
     else {
