@@ -67,7 +67,7 @@ footer {
     justify-content: center;
 }
 
-footer button {
+#axe, #box, #shovel, #pickaxe, #sword {
     margin: 2%;
     margin-top: 2%;
     border-radius: 12px;
@@ -77,11 +77,22 @@ footer button {
     z-index: 1;
 }
 
+#reset-game{
+    font-size: 24px;
+    margin: 2%;
+    margin-top: 15%;
+    border-radius: 12px;
+    width: 140%;
+    height: 50%;
+    background-color: rgba(68, 68, 68);
+    z-index: 1;
+}
+
 footer button:focus {
     border: 1px solid white;
 }
 
-footer img{
+footer img {
     width: 60px;
     height: 60px;
 }
@@ -106,8 +117,14 @@ footer img{
     gap: 2%;
 }
 
-.content {
+.treeInventory,
+.branchInventory,
+.grassInventory,
+.groundInventory,
+.blockInventory {
     width: 100px;
     height: 100px;
     background-image: none;
+    font-size: 24px;
+    color: white;
 }

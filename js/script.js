@@ -1,4 +1,4 @@
-    const head = document.getElementById("header")
+const head = document.getElementById("header")
 let cursor = null;
 const box = document.getElementById("box")
 const inventory = document.getElementById("inventory")
@@ -33,53 +33,156 @@ for (let i = 0; i < 25; i++) {
         cube.addEventListener("click", () => {
 
             if (cursor === "axe" && (cube.className === "tree" || cube.className === "branch")) {
-                boxContent[cube.className] += 1
-                if (boxContent[cube.className] === 1) {
-                    const content = document.createElement("button")
-                    content.classList = "content"
-                    if (cube.className === "tree") {
-                        // content.className = "tree"
+                if (cube.className === "tree") {
+                    boxContent.tree += 1
+                    if (boxContent.tree === 1) {
+                        const content = document.createElement("button")
+                        content.addEventListener("click", changeCursorImage)
+                        content.className = "treeInventory"
                         content.style.backgroundImage = "url('../images/tree.png')"
-                        
+                        inventory.appendChild(content)
                     }
-                    else {
-                        // content.className = "branch"
+                    if (boxContent.tree >= 1) {
+                        const tree = document.querySelector(".treeInventory")
+                        tree.innerHTML = boxContent.tree
+                    }
+                }
+                if (cube.className === "branch") {
+                    boxContent.branch += 1
+                    if (boxContent.branch === 1) {
+                        const content = document.createElement("button")
+                        content.addEventListener("click", changeCursorImage)
+                        content.className = "branchInventory"
                         content.style.backgroundImage = "url('../images/branch.png')"
+                        inventory.appendChild(content)
                     }
-                    // const pargraph = document.createElement("p")
-                    // pargraph.innerHTML = boxContent[cube.className]
-                    // console.log(pargraph)
-                    inventory.appendChild(content)
+                    if (boxContent.branch >= 1) {
+                        const branch = document.querySelector(".branchInventory")
+                        branch.innerHTML = boxContent.branch
+                    }
                 }
                 cube.classList = "sky"
             }
             if (cursor === "shovel" && (cube.className === "grass" || cube.className === "ground")) {
-                boxContent[cube.className] += 1
-                if (boxContent[cube.className] === 1) {
-                    const content = document.createElement("button")
-                    content.classList = "content"
-                    if (cube.className === "grass") {
+                if (cube.className === "grass") {
+                    boxContent.grass += 1
+                    if (boxContent.grass === 1) {
+                        const content = document.createElement("button")
+                        content.addEventListener("click", changeCursorImage)
+                        content.className = "grassInventory"
                         content.style.backgroundImage = "url('../images/grass.png')"
+                        inventory.appendChild(content)
                     }
-                    else {
+                    if (boxContent.grass >= 1) {
+                        const grass = document.querySelector(".grassInventory")
+                        grass.innerHTML = boxContent.grass
+                    }
+                }
+                if (cube.className === "ground") {
+                    boxContent.ground += 1
+                    if (boxContent.ground === 1) {
+                        const content = document.createElement("button")
+                        content.addEventListener("click", changeCursorImage)
+                        content.className = "groundInventory"
                         content.style.backgroundImage = "url('../images/ground.png')"
+                        inventory.appendChild(content)
                     }
+                    if (boxContent.ground >= 1) {
+                        const ground = document.querySelector(".groundInventory")
+                        ground.innerHTML = boxContent.ground
+                    }
+                }
 
-                    inventory.appendChild(content)
-                }
                 cube.classList = "sky"
             }
+
             if (cursor === "pickaxe" && cube.className === "block") {
-                boxContent.block += 1
-                if (boxContent[cube.className] === 1) {
-                    const content = document.createElement("button")
-                    content.classList = "content"
-                    content.style.backgroundImage = "url('../images/block.jpg')"
-                    inventory.appendChild(content)
+                if (cube.className === "block") {
+                    boxContent.block += 1
+                    if (boxContent.block === 1) {
+                        const content = document.createElement("button")
+                        content.addEventListener("click", changeCursorImage)
+                        content.className = "blockInventory"
+                        content.style.backgroundImage = "url('../images/block.jpg')"
+                        inventory.appendChild(content)
+                    }
+                    if (boxContent.block >= 1) {
+                        const block = document.querySelector(".blockInventory")
+                        block.innerHTML = boxContent.block
+                    }
                 }
                 cube.classList = "sky"
             }
+            if (cursor === "tree" && cube.className === "sky") {
+                if (boxContent.tree > 0) {
+                    boxContent.tree -= 1
+                    cube.classList = "tree"
+                    const tree = document.querySelector(".treeInventory")
+                    tree.innerHTML = boxContent.tree
+                }
+                if (boxContent.tree === 0) {
+                    const tree = document.querySelector(".treeInventory")
+                    tree.remove()
+                    document.body.style.cursor = "auto"
+                }
+            }
+            if (cursor === "branch" && cube.className === "sky") {
+                if (boxContent.branch >= 1) {
+                    boxContent.branch -= 1
+                    cube.classList = "branch"
+                    const branch = document.querySelector(".branchInventory")
+                    branch.innerHTML = boxContent.branch
+                }
+                if (boxContent.branch === 0) {
+                    const branch = document.querySelector(".branchInventory")
+                    branch.remove()
+                    document.body.style.cursor = "auto"
+                }
+            }
+            if (cursor === "grass" && cube.className === "sky") {
+                if (boxContent.grass >= 1) {
+                    boxContent.grass -= 1
+                    cube.classList = "grass"
+                    const grass = document.querySelector(".grassInventory")
+                    grass.innerHTML = boxContent.grass
+                }
+                if (boxContent.grass === 0) {
+                    const grass = document.querySelector(".grassInventory")
+                    grass.remove()
+                    document.body.style.cursor = "auto"
+                }
+            }
+            if (cursor === "ground" && cube.className === "sky") {
+                if (boxContent.ground >= 1) {
+                    boxContent.ground -= 1
+                    cube.classList = "ground"
+                    const ground = document.querySelector(".groundInventory")
+                    ground.innerHTML = boxContent.ground
+                }
+                if (boxContent.ground === 0) {
+                    const ground = document.querySelector(".groundInventory")
+                    ground.remove()
+                    document.body.style.cursor = "auto"
+                }
+            }
+            if (cursor === "block" && cube.className === "sky") {
+                if (boxContent.block >= 1) {
+                    boxContent.block -= 1
+                    cube.classList = "block"
+                    const block = document.querySelector(".blockInventory")
+                    block.innerHTML = boxContent.block
+
+                }
+                if (boxContent.block === 0) {
+                    const block = document.querySelector(".blockInventory")
+                    block.remove()
+                    document.body.style.cursor = "auto"
+                }
+            }
+
         })
+
+
 
         head.appendChild(cube)
     }
@@ -109,17 +212,12 @@ function changeCursor(tool) {
 
 
 box.addEventListener("click", () => {
-    if (boxContent.block === 0 && boxContent.grass === 0 && boxContent.tree === 0 && boxContent.ground === 0 && boxContent.branch === 0) {
-        // const alert = document.createElement("div")
-        // alert.style.width= "50px"
-        // alert.style.height = "20px"
-        // alert.textContent = "start playing to have items"
-        // alert.style.backgroundColor = "red"
-        // head.appendChild(alert)
-    }
-    else if (!openBox) {
+    // if (boxContent.block === 0 && boxContent.grass === 0 && boxContent.tree === 0 && boxContent.ground === 0 && boxContent.branch === 0) {
+
+    // }
+    if (!openBox) {
         inventory.style.display = "flex"
-        inventory.style.flexWrap == "wrap"
+        inventory.style.flexWrap = "wrap"
         openBox = true;
     }
     else {
@@ -127,3 +225,27 @@ box.addEventListener("click", () => {
         openBox = false
     }
 })
+
+
+function changeCursorImage(block) {
+    if (block.currentTarget.classList.contains("treeInventory")) {
+        document.body.style.cursor = "url('../images/tree.png') 8 8 , auto"
+        cursor = "tree"
+    }
+    if (block.currentTarget.classList.contains("branchInventory")) {
+        document.body.style.cursor = "url('../images/branch.png') 8 8, auto"
+        cursor = "branch"
+    }
+    if (block.currentTarget.classList.contains("grassInventory")) {
+        document.body.style.cursor = "url('../images/grass.png') 8 8 ,auto"
+        cursor = "grass"
+    }
+    if (block.currentTarget.classList.contains("groundInventory")) {
+        document.body.style.cursor = "url('../images/ground.png') 8 8 ,auto"
+        cursor = "ground"
+    }
+    if (block.currentTarget.classList.contains("blockInventory")) {
+        document.body.style.cursor = "url('../images/block.jpg') 8 8 ,auto"
+        cursor = "block"
+    }
+}
